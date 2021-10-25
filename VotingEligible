@@ -1,0 +1,37 @@
+using System;
+
+
+namespace votingEligible
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String name;
+            String mobNo;
+            String address;
+            DateTime dob;
+            int age;
+            Console.WriteLine("Enter your name");
+            name = Console.ReadLine();
+            Console.WriteLine("Enter your Mobile Number");
+            mobNo = Console.ReadLine();
+            Console.WriteLine("Enter your Address");
+            address = Console.ReadLine();
+            Console.WriteLine("Enter your Date_of_Birth");
+            dob = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("Enter your age");
+            age = Convert.ToInt32(Console.ReadLine());
+            if(age>=18)
+            {
+                Console.WriteLine("The Person is Eligible for Voting");
+
+            }
+            else
+            {
+                Console.WriteLine("The Person is Not Eligible for Voting");
+            }
+            Console.ReadKey();
+        }
+    }
+}
