@@ -1,0 +1,107 @@
+using System;
+
+
+namespace EmpDetails
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String name;
+            String empId;
+            String mobNo;
+            String address;
+            String email;
+            double sal;
+            DateTime dob;
+            DateTime doj;
+
+            Console.WriteLine("1.Add  Deatils");
+            Console.WriteLine("2.Update Deatils");
+            Console.WriteLine("3.Display Deatils");
+
+            Console.WriteLine("Enter your Option");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch(option)
+            {
+                case 1:
+                    {
+                        Console.WriteLine("Enter your Name");
+                        name = Console.ReadLine();
+                        Console.WriteLine("Enter your Employee_Id");
+                        empId = Console.ReadLine();
+                        Console.WriteLine("Enter your Mobile Number");
+                        mobNo = Console.ReadLine();
+                        Console.WriteLine("Enter your Address");
+                        address = Console.ReadLine();
+                        Console.WriteLine("Enter your Email");
+                        email = Console.ReadLine();
+                        Console.WriteLine("Enter your Salary");
+                        sal = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter your Date Of Birth");
+                        dob =Convert.ToDateTime( Console.ReadLine());
+                        Console.WriteLine("Enter your Date_of_joining");
+                        doj = Convert.ToDateTime(Console.ReadLine());
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.WriteLine("Enter your Name");
+                        name = Console.ReadLine();
+                        Console.WriteLine("Enter your Employee_Id");
+                        empId = Console.ReadLine();
+                        Console.WriteLine("Enter your Mobile Number");
+                        mobNo = Console.ReadLine();
+                        Console.WriteLine("Enter your Address");
+                        address = Console.ReadLine();
+                        Console.WriteLine("Enter your Email");
+                        email = Console.ReadLine();
+                        Console.WriteLine("Enter your Salary");
+                        sal = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter your Date Of Birth");
+                        dob = Convert.ToDateTime(Console.ReadLine());
+                        Console.WriteLine("Enter your Date_of_joining");
+                        doj = Convert.ToDateTime(Console.ReadLine());
+                        break;
+
+                    }
+                case 3:
+                    {
+                      Console.WriteLine("Enter your Name");
+                        name = Console.ReadLine();
+                        Console.WriteLine("Enter your Employee_Id");
+                        empId = Console.ReadLine();
+                        Console.WriteLine("Enter your Mobile Number");
+                        mobNo = Console.ReadLine();
+                        Console.WriteLine("Enter your Address");
+                        address = Console.ReadLine();
+                        Console.WriteLine("Enter your Email");
+                        email = Console.ReadLine();
+                        Console.WriteLine("Enter your Salary");
+                        sal = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter your Date Of Birth");
+                        dob = Convert.ToDateTime(Console.ReadLine());
+                        Console.WriteLine("Enter your Date_of_joining");
+                        doj = Convert.ToDateTime(Console.ReadLine());
+                        Console.WriteLine("NAME :" + name);
+                        Console.WriteLine("EMP ID :" +empId);
+                        Console.WriteLine("MOBILE NO : " +mobNo);
+                        Console.WriteLine("ADDRESS :" +address);
+                        Console.WriteLine("EMAIL :" +email);
+                        Console.WriteLine("SALARY :" +sal );
+                        Console.WriteLine("DOB :" +dob);
+                        Console.WriteLine("DOJ L :" + doj);
+                        Console.ReadKey();
+
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Enter correcct option");
+                        break;
+                    }
+
+            }
+        }
+    }
+}
