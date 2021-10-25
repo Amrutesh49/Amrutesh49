@@ -1,0 +1,145 @@
+using System;
+
+
+namespace Calculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Basic Calculator");
+            Console.WriteLine("1.Addition");
+            Console.WriteLine("2.Subtraction");
+            Console.WriteLine("3.Multiplication");
+            Console.WriteLine("4.Division");
+            Console.WriteLine("enter your choice");
+            int ch = Convert.ToInt32(Console.ReadLine());
+           
+
+
+
+            void Addition(double a, double b)
+            {
+                Console.WriteLine("Addtion"  +a+  "+"  +b+ "=" +(a + b));
+            }
+            void Sustraction(double a, double b)
+            {
+                Console.WriteLine("Sustraction" +a+ "-" + b + "=" + (a - b));
+            }
+            void Multiplication(double a, double b)
+            {
+                Console.WriteLine("Multiplication" + a + "*" + b + "=" + (a * b));
+            }
+            void Division(double a, double b)
+            {
+                Console.WriteLine("Division" + a + "/" + b + "=" + (a / b));
+            }
+           
+            switch (ch)
+            {
+                case 1:
+                    {
+                        Console.WriteLine("Enter first number");
+                        double a = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter Second number");
+                        double b = Convert.ToDouble(Console.ReadLine());
+                        Addition(a,b);
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.WriteLine("Enter first number");
+                        double a = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter Second number");
+                        double b = Convert.ToDouble(Console.ReadLine());
+                        Sustraction(a,b);
+                        break;
+                    }
+                case 3:
+                    {
+                        Console.WriteLine("Enter first number");
+                        double a = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter Second number");
+                        double b = Convert.ToDouble(Console.ReadLine());
+                        Multiplication(a,b);
+                        break;
+                    }
+                case 4:
+                    {
+                        Console.WriteLine("Enter first number");
+                        double a = Convert.ToDouble(Console.ReadLine());
+                        Console.WriteLine("Enter Second number");
+                        double b = Convert.ToDouble(Console.ReadLine());
+                        Division(a,b);
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("please Enter a correct Choice");
+                        break;
+                    }
+            }
+
+            Console.WriteLine("do you want to continue yes/no");
+            string s = Console.ReadLine();
+            while (s !="no")
+            {
+                Console.WriteLine("Basic Calculator");
+                Console.WriteLine("1.Addition");
+                Console.WriteLine("2.Subtraction");
+                Console.WriteLine("3.Multiplication");
+                Console.WriteLine("4.Division");
+                Console.WriteLine("enter your choice");
+                int cho = Convert.ToInt32(Console.ReadLine());
+                switch (cho)
+                {
+                    case 1:
+                        {
+                            Console.WriteLine("Enter first number");
+                            double a = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Enter Second number");
+                            double b = Convert.ToDouble(Console.ReadLine());
+                            Addition(a, b);
+                            break;
+                        }
+                    case 2:
+                        {
+                            Console.WriteLine("Enter first number");
+                            double a = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Enter Second number");
+                            double b = Convert.ToDouble(Console.ReadLine());
+                            Sustraction(a, b);
+                            break;
+                        }
+                    case 3:
+                        {
+                            Console.WriteLine("Enter first number");
+                            double a = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Enter Second number");
+                            double b = Convert.ToDouble(Console.ReadLine());
+                            Multiplication(a, b);
+                            break;
+                        }
+                    case 4:
+                        {
+                            Console.WriteLine("Enter first number");
+                            double a = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Enter Second number");
+                            double b = Convert.ToDouble(Console.ReadLine());
+                            Division(a, b);
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("please Enter a correct Choice");
+                            break;
+                        }
+
+                }
+
+            }
+        }
+
+    }
+}
+
