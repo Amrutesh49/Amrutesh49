@@ -1,0 +1,47 @@
+using System;
+
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String name;
+            String empId;
+            String mobNo;
+            String address;
+            double sal;
+            DateTime doj;
+            double annualSalary;
+
+            Console.WriteLine("Enter your Name");
+            name = Console.ReadLine();
+            Console.WriteLine("Enter your Employee_Id");
+            empId = Console.ReadLine();
+            Console.WriteLine("Enter your Mobile Number");
+            mobNo = Console.ReadLine();
+            Console.WriteLine("Enter your Address");
+            address = Console.ReadLine();
+            Console.WriteLine("Enter your Salary");
+            sal = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter your Date_of_joining");
+            doj = Convert.ToDateTime(Console.ReadLine());
+
+            Console.WriteLine("Employee Details");
+
+            DateTime tdy = DateTime.Today;
+            String experince = (tdy - doj).TotalDays.ToString();
+            int totaldays = Convert.ToInt32(experince);
+            int year = totaldays / 365;
+            int remainingDays = totaldays % 365;
+            int month = remainingDays / 30;
+            remainingDays = remainingDays % 30;
+            String text = year + "years" + month + "month and"  +  remainingDays  +  "days";
+            Console.WriteLine("Experience of " + name + " is : "  +  text);
+            annualSalary = sal * 12;
+            Console.WriteLine("Annual Salary :" + " Rs." + annualSalary);
+            Console.ReadLine();
+        }
+    }
+}
