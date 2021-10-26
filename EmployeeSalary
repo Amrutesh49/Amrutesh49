@@ -1,0 +1,43 @@
+using System;
+
+
+namespace Arrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the size of the Array you want store ");
+            int n =Convert.ToInt32( Console.ReadLine());
+            Console.WriteLine("enter the employees salary");
+            int[] sal = new int[n];
+            
+            for( int i=0;i<sal.Length;i++)
+            {
+                sal[i] = int.Parse(Console.ReadLine());
+
+            }
+            int[] avg = Array.FindAll(sal, x =>  x>=15000 && x<= 25000 );
+            Console.WriteLine("average salary of employee");
+            foreach(int salary in avg)
+            {
+                Console.WriteLine(salary);
+
+            }
+            int[] low = Array.FindAll(sal, x => x <= 15000);
+            Console.WriteLine("lowest salary of employee");
+            foreach (int salary in low)
+            {
+                Console.WriteLine(salary);
+
+            }
+            int[] highest = Array.FindAll(sal, x => x >= 30000);
+            Console.WriteLine("highest salary of employee");
+            foreach (int salary in highest)
+            {
+                Console.WriteLine(salary);
+
+            }
+        }
+    }
+}
