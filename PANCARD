@@ -1,0 +1,33 @@
+using System;
+
+
+namespace BankDetails
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[,] Bank;
+            int panNo;
+            int BankBalanace;
+
+            Console.WriteLine("enter the size of panNumber");
+            panNo =Convert.ToInt32( Console.ReadLine());
+            Console.WriteLine("enter the balance amount  of each customer");
+            BankBalanace = Convert.ToInt32(Console.ReadLine());
+            Bank = new string [panNo, BankBalanace];
+            Console.WriteLine("Enter the BankCoustmer Details");
+            for(int i=0; i<panNo ;i++)
+            {
+                Console.WriteLine("enter the{0}  PanCard Number Of BankCustomer", i + 1);
+                for(int j=0;j<BankBalanace;j++)
+                {
+                    Console.WriteLine("{ 0} bankBalance", j + 1);
+                    Bank[i, j] = Console.ReadLine();
+
+                }
+            }
+
+        } 
+    }
+}
