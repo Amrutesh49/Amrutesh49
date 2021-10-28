@@ -1,0 +1,39 @@
+using System;
+
+
+namespace PositiveAndNegative
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the size of the array");
+            int size = Convert.ToInt32(Console.ReadLine());
+            int[] num = new int[size];
+            Console.WriteLine("enter the elements to the array");
+            for(int i=0;i<size;i++)
+            {
+                num[i] =int.Parse( Console.ReadLine()); 
+            }Console.WriteLine("array elemets are:");
+
+            for(int i = 0; i < size; i++)
+            {
+                Console.WriteLine(num[i]);
+            }
+            Console.WriteLine("positive elements presetnt in an array are:");
+            int[] positive = Array.FindAll(num, x => x >= 0);
+            foreach(int pos  in positive)
+            {
+                Console.WriteLine(pos);
+
+            }
+            Console.WriteLine("negative elements presetnt in an array are:");
+            int[] negative = Array.FindAll(num, x => x <=0);
+            foreach (int neg in negative)
+            {
+                Console.WriteLine(neg);
+
+            }
+        }
+    }
+}
