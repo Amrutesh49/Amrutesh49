@@ -1,0 +1,41 @@
+using System;
+using System.Text;
+
+
+namespace DemoBuilder
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StringBuilder Participant_Details = new StringBuilder();
+                 Participant_Details.AppendLine("amrutesh ");
+                 Participant_Details.AppendLine("21");
+                 Participant_Details.AppendLine("Test Associate");
+                Participant_Details.AppendLine("1week");
+                 Participant_Details.AppendLine("BCA");
+
+            Console.WriteLine(Participant_Details.Length);
+            Participant_Details.Insert(0, Participant_Details);
+            Console.Write(Participant_Details);
+            //Console.Write("Name{,}" ,"age{,}", "job{,}" , "experiance{,}", "qualification{,} ", "amrutesh", "21", "Test Associate", "1week", "BCA");
+
+            //StringBuilder details = new StringBuilder();
+            // foreach(String  info in Participant_Details)
+            //{
+
+            //}
+          // String details  = Participant_Details.Append(Participant_Details.ToString());
+            
+            //String con = Participant_Details.ToString().Substring(0,43);
+            
+           // Console.Write(con);
+            Console.ReadKey();
+
+
+
+
+            
+        }
+    }
+}
