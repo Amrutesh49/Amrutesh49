@@ -1,0 +1,29 @@
+using System;
+
+
+namespace DemoString
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter your Name,Age,job,experciance in job,qalification :");
+            String Details = Console.ReadLine();
+            // Console.WriteLine("Enter your age:");
+            // int age = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("enter your job destination");
+            //string job = Console.ReadLine();
+            //Console.WriteLine("Enter experince you have in job");
+            //string expperiance = Console.ReadLine();
+            //Console.WriteLine("Enter your Qalification");
+            //string qalification = Console.ReadLine();
+          String[] detail=Details.Split(',');
+            foreach(String all in detail)
+            {
+                Console.WriteLine(all);
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
