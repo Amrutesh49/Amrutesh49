@@ -1,0 +1,157 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ObjectPrg
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            User user1 = new User();
+            user1.Email = "sanjuamruteshs@gmail.com";
+            user1.Password = "********";
+            user1.Mobile_no = 9108977011l;
+            user1.Address = "Banglore-62";
+            Console.WriteLine("Details of user");
+            Console.WriteLine(user1.ToString());
+
+            Product p1 = new Product();
+            p1.Id = 101;
+            p1.Name = "laptop";
+            p1.Category = "MACHINE";
+            p1.Price = 2500.99;
+            Console.WriteLine("Details of product");
+            Console.WriteLine(p1.ToString());
+
+
+            Console.WriteLine("***************************************************************");
+            Console.WriteLine("Details are Stored in Array");
+            User[] u1 = new User[4];
+            u1[0].Email = "sanjuamruteshs@gmail.com";
+            u1[1].Password = "********";
+            u1[2].Mobile_no = 9108977011l;
+            u1[3].Address = "Banglore-62";
+          //  Console.WriteLine("Details of user");
+           // Console.WriteLine(u1.ToString());
+            for (int i = 0; i < u1.Length; i++)
+            {
+                Console.WriteLine(u1[i]);
+
+            }
+            foreach(var item in u1)
+            {
+                Console.WriteLine(item);
+            }
+                
+
+            Product[] p = new Product[4];
+            p[0].Id = 101;
+            p[1].Name = "printer";
+            p[2].Category = "Machine";
+            p[3].Price = 12000;
+            //Console.WriteLine("Details of product");
+            //Console.WriteLine(p1.ToString());
+            for(int i=0;i<p.Length;i++)
+            {
+                Console.WriteLine(p[i]);
+
+            }
+            foreach (var item in p)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ObjectPrg
+{
+    class User
+    {
+        String email;
+        String password;
+        long mobile_no;
+        String address;
+        
+        public User()
+        {
+
+        }
+        public User(String email, String password, long mobile_no, String address)
+        {
+            email = email;
+            password = password;
+            mobile_no = mobile_no;
+            address = address;
+        }
+
+        public string Email { get => email; set => email = value; }
+        public string Password { get => password; set => password = value; }
+        public long Mobile_no { get => mobile_no; set => mobile_no = value; }
+        public string Address { get => address; set => address = value; }
+
+
+        public override string ToString()
+        {
+            return String.Format("email: {0} \n password: {1} \n mobileno: {2} \n address: {3}   ",  email,  password, mobile_no, address);
+        }
+    }
+}
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ObjectPrg
+{
+    class Product
+    {
+        int id;
+        string name;
+        String category;
+        double price;
+
+        public int Id { get => id; set => id = value; }
+        public string Name { get => name; set => name = value; }
+        public string Category { get => category; set => category = value; }
+        public double Price { get => price; set => price = value; }
+
+        public Product(int id, string name, String category, double price)
+        {
+            id = id;
+            category = category;
+            name = name;
+            price = price;
+        }
+         
+        public Product()
+        {
+
+        }
+        public override string ToString()
+        {
+            return String.Format("id: {0} \n  catagory: {1} \n  name: {2} \n  price: {3}  ", id ,  category ,  name ,  price);
+        }
+    }
+}
