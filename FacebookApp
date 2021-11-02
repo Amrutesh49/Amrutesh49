@@ -1,0 +1,132 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FacebookApp
+{
+    class User
+    {
+        String fname;
+        String lname;
+        String email;
+        long mobile_no;
+        DateTime dob;
+
+        public string Fname { get => fname; set => fname = value; }
+        public string Lname { get => lname; set => lname = value; }
+        public long Mobile_no { get => mobile_no; set => mobile_no = value; }
+        public DateTime Dob { get => dob; set => dob = value; }
+        public string Email { get => email; set => email = value; }
+
+        public User()
+        {
+
+        }
+        public User(String fname)
+        {
+           this. fname = fname;
+        }
+        public User(String fname,String lname)
+        {
+            this.fname = fname;
+            this.lname = lname;
+
+
+        }
+        public User(String fname, String lname, String email)
+        {
+            this.fname = fname;
+            this.lname = lname;
+            this.email = email;
+        }
+        public User(String fname, String lname, String email, long mobile_no)
+        {
+            this.fname = fname;
+            this.lname = lname;
+            this.email = email;
+            this.mobile_no = mobile_no;
+
+        }
+        public User(String fname, String lname, String email, long mobile_no,DateTime dob)
+        {
+            this.fname = fname;
+            this.lname = lname;
+            this.email = email;
+            this.mobile_no = mobile_no;
+            this.dob = dob;
+
+
+        }
+        public override string ToString()
+        {
+            return String.Format("{0,10}  {1,15}  {2,20}  {3,25}  {4,30}", fname, lname,email, mobile_no, dob);
+        }
+        public override bool Equals(object obj)
+        {
+           
+            User t = (User)obj;
+            return (this.email.Equals(t.email) && this.mobile_no.Equals(t.mobile_no));
+            
+           
+            
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FacebookApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the no of users");
+            int no_of_users = Convert.ToInt32(Console.ReadLine());
+            User[] u = new User[no_of_users];
+            for(int i=0;i<no_of_users;i++)
+            {
+              // if(u[i].Email.Equals(u[i].Email) && u[i].Mobile_no.Equals(u[i].Mobile_no))
+                // {
+                  // Console.WriteLine("This account already existed");
+               //}
+                u[i] = new User();
+                Console.WriteLine("Enter your First Name :");
+                u[i].Fname = Console.ReadLine();
+                Console.WriteLine("Enter your Last Name :");
+                u[i].Lname = Console.ReadLine();
+                Console.WriteLine("Enter your Email :");
+                u[i].Email = Console.ReadLine();
+                Console.WriteLine("Enter your MobileNumber :");
+                u[i].Mobile_no = Convert.ToInt64(Console.ReadLine());
+              //  if (u[i].Email.Equals(u[i].Email) && u[i].Mobile_no.Equals(u[i].Mobile_no))
+                //{
+                  //  Console.WriteLine("This account already existed");
+               // }
+                Console.WriteLine("Enter your Date Of Birth :");
+                u[i].Dob = Convert.ToDateTime(Console.ReadLine());
+                
+            }
+            
+            foreach(var item in u)
+            {
+                Console.WriteLine(item.ToString());
+
+            }
+        }
+    }
+}
