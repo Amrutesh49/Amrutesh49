@@ -1,0 +1,102 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Company
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter number of companyes");
+            int no = Convert.ToInt32(Console.ReadLine());
+            Company[] c = new Company[no];
+            for(int i=0;i<no;i++)
+            {
+                c[i] = new Company();
+                Console.WriteLine("Enter the company  details");
+                Console.WriteLine("Enter company name");
+                c[i].Name = Console.ReadLine();
+                Console.WriteLine("Enter company Sector");
+                c[i].Sector = Console.ReadLine();
+                Console.WriteLine("Enter company Location");
+                c[i].Location = Console.ReadLine();
+                Console.WriteLine("Enter age");
+                c[i].Age = Convert.ToInt32(Console.ReadLine());
+
+                Company c1 = new Company();
+                if(!c.Contains(c1))
+                {
+                    c[i] = c1;
+                    
+
+                }
+                else if(!c.Equals(c1))
+
+                {
+                    Console.WriteLine("comapnay 1 and 2 are diffrent");
+                }
+                else
+                {
+                    Console.WriteLine("comapnay 1 is same as 2");
+                }
+
+                
+            }
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Company
+{
+    class Company
+    {
+        String name;
+        String sector;
+        string location;
+        int age;
+
+        public Company()
+        {
+        }
+
+        public Company(string name, string sector, string location, int age)
+        {
+            Name = name;
+            Sector = sector;
+            Location = location;
+            Age = age;
+        }
+
+        public string Name { get => name; set => name = value; }
+        public string Sector { get => sector; set => sector = value; }
+        public string Location { get => location; set => location = value; }
+        public int Age { get => age; set => age = value; }
+
+        public override string ToString()
+        {
+            return String.Format("Name : {0}  \n  Sector : {1}  \n  Location : {2}  \n Agr : {3} ", name, sector, location, age);
+        }
+        public override bool Equals(object obj)
+        {
+            Company t = (Company)obj;
+            return this.name == t.name && this.sector == t.sector && this.location == t.location && this.age == t.age;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+    }
+}
