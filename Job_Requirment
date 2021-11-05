@@ -1,0 +1,161 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Job :IComparable
+    {
+        String role;
+        String skillset;
+        String employmentType;
+        String location;
+        int miniExperience;
+        double salary;
+
+        public Job()
+        {
+        }
+
+        public Job(string role, string skillset, string employmentType, string location, int miniExperience, double salary)
+        {
+            Role = role;
+            Skillset = skillset;
+            EmploymentType = employmentType;
+            Location = location;
+            MiniExperience = miniExperience;
+            Salary = salary;
+        }
+
+        public string Role { get => role; set => role = value; }
+        public string Skillset { get => skillset; set => skillset = value; }
+        public string EmploymentType { get => employmentType; set => employmentType = value; }
+        public string Location { get => location; set => location = value; }
+        public int MiniExperience { get => miniExperience; set => miniExperience = value; }
+        public double Salary { get => salary; set => salary = value; }
+
+        public override string ToString()
+        {
+            return String.Format("Role : {0}  ,EmployementType : {1}  Location : {2}  Min.Experiance : {3}  Salary :{4}", role, employmentType, location, miniExperience, salary);
+        }
+        public override bool Equals(object obj)
+        {
+            Job t = (Job)obj;
+            return this.miniExperience.Equals(t.miniExperience);
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public int CompareTo(object obj)
+        {
+            Job j = (Job)obj;
+            return this.miniExperience.CompareTo(j.miniExperience);
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class SalaryComparator : Job,  IComparable
+    {
+        
+        public int CompareTo(object obj)
+        {
+            Job t = (Job)obj;
+            return this.Salary.CompareTo(t.Salary);
+        }
+        public override string ToString()
+        {
+            return String.Format(base.ToString());
+        }
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("enter the number of jobs");
+            int no =Convert.ToInt32( Console.ReadLine());
+            SalaryComparator []sc = new SalaryComparator[no];
+            for(int i=0;i<no;i++)
+            {
+                sc[i] = new SalaryComparator();
+                Console.WriteLine("Enter your  Job Role");
+                sc[i].Role = Console.ReadLine();
+                Console.WriteLine("Enter SkilSet");
+                sc[i].Skillset = Console.ReadLine();
+                Console.WriteLine("Enter EmployementType");
+                sc[i].EmploymentType = Console.ReadLine();
+                Console.WriteLine("Enter Location");
+                sc[i].Location = Console.ReadLine();
+                Console.WriteLine("Enter MiniExperiance");
+                sc[i].MiniExperience =Convert.ToInt32( Console.ReadLine());
+                Console.WriteLine("Enter Salary");
+                sc[i].Salary =Convert.ToDouble( Console.ReadLine());
+                Console.WriteLine("Thank you for entering your Details");
+            }
+            Console.WriteLine("Enter a type to Sort");
+            Console.WriteLine("1.Sort by mini.experiance");
+            Console.WriteLine("2.Sort by slary");
+            Console.WriteLine("enter your choice");
+            int ch = Convert.ToInt32(Console.ReadLine());
+            Job j = new Job();
+             String print=j.ToString();
+            SalaryComparator s = new SalaryComparator();
+            String printSalary=sc.ToString();
+            switch(ch)
+                {
+                case 1:
+                    {
+                        
+                        j.CompareTo(j);
+                        j.ToString();
+                        Console.WriteLine(print);
+                        break;
+                    }
+                case 2:
+                    {
+                        
+                        s.CompareTo(j);
+                        s.ToString();
+                        Console.WriteLine(printSalary);
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Pleace Enter correct Option..!");
+                        Console.WriteLine("Thank you");
+                        break;
+                    }
+            }
+           
+        }
+    }
+}
