@@ -1,0 +1,176 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JobObject
+{
+    class JobDetails
+    {
+        String role;
+        String skillset;
+        String employmentType;
+        String location;
+        int miniExperience;
+        double salary;
+
+        public JobDetails()
+        {
+        }
+
+        public JobDetails(string role, string skillset, string employmentType, string location, int miniExperience, double salary)
+        {
+            Role = role;
+            Skillset = skillset;
+            EmploymentType = employmentType;
+            Location = location;
+            MiniExperience = miniExperience;
+            Salary = salary;
+        }
+
+        public string Role { get => role; set => role = value; }
+        public string Skillset { get => skillset; set => skillset = value; }
+        public string EmploymentType { get => employmentType; set => employmentType = value; }
+        public string Location { get => location; set => location = value; }
+        public int MiniExperience { get => miniExperience; set => miniExperience = value; }
+        public double Salary { get => salary; set => salary = value; }
+
+        public override string ToString()
+        {
+            return String.Format("Role : {0}  ,EmployementType : {1}  Location : {2}  Min.Experiance : {3}  Salary :{4}", role, employmentType, location, miniExperience, salary);
+        }
+        public override bool Equals(object obj)
+        {
+            JobDetails t = (JobDetails)obj;
+            return this.miniExperience.Equals(t.miniExperience);
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+
+    }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JobObject
+{
+    class JobBo
+    {
+        public List<JobDetails> findLocation(List<JobDetails> jobList, string location)
+        {
+            List<JobDetails> result = new List<JobDetails>();
+            foreach( var item in jobList)
+            {
+                if(item.Location.Equals(location))
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+
+        }
+        public List<JobDetails> findSalary(List<JobDetails> jobList,double salary)
+        {
+            List<JobDetails> result = new List<JobDetails>();
+            foreach (var item in jobList)
+            {
+                if (item.Salary.Equals(salary))
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
+    }
+}
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JobObject
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<JobDetails> joblist = null; 
+            Console.WriteLine("enter the no of job openings");
+            int no = Convert.ToInt32(Console.ReadLine());
+            JobDetails[] jobs = new JobDetails[no];
+            for (int i = 0; i<no;i++)
+            {
+                jobs[i] = new JobDetails();
+                Console.WriteLine("Enter your  Job Role");
+                jobs[i].Role = Console.ReadLine();
+                Console.WriteLine("Enter SkilSet");
+                jobs[i].Skillset = Console.ReadLine();
+                Console.WriteLine("Enter EmployementType");
+                jobs[i].EmploymentType = Console.ReadLine();
+                Console.WriteLine("Enter Location");
+                jobs[i].Location = Console.ReadLine();
+                Console.WriteLine("Enter MiniExperiance");
+                jobs[i].MiniExperience = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Salary");
+                jobs[i].Salary = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Thank you for entering your Details");
+            }
+            Console.WriteLine("Enter a Search type :");
+            Console.WriteLine("1.By Salary");
+            Console.WriteLine("2.Bylocation");
+            Console.WriteLine("Enter your choice");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            JobBo jbo = new JobBo();
+            List<JobDetails> job_deatails = null;
+            switch(choice)
+            {
+                case 1:
+                    {
+                        Console.WriteLine("Enter the Salary");
+                        double salary = Convert.ToDouble(Console.ReadLine());
+
+                        job_deatails = jbo.findSalary(joblist,salary);
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.WriteLine("Enter the Location");
+                        String location = Console.ReadLine();
+                        job_deatails = jbo.findLocation(joblist,location);
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Please Enter a correct choice..! \n  Thank You");
+                        break;
+
+                    }
+
+            }
+            if(job_deatails!=null)
+            {
+                foreach(var item in job_deatails)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+
+        }
+    }
+}
