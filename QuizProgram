@@ -1,0 +1,221 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+ using NUnit.Framework;
+using StoryApplication;
+namespace TestStoryApplication1
+{
+    [TestFixture]
+    class TestStoryBo
+    {
+       StoryBo storyBo = null;
+        static List<Story> storyList;
+
+
+            [SetUp]
+        public void SetUp()
+        {
+            storyBo = new StoryBo();
+            storyList = new List<Story>();
+            Story s = new Story("one", "subash", "young", 23, 3400, 4500);
+            Story s1 = new Story("two", "subash", "young", 23, 7400, 9500);
+            Story s2 = new Story("three", "lucky", "old", 232, 9400, 10500);
+            Story s3 = new Story("four", "lucky", "young", 28, 4400, 10500);
+            storyList.Add(s);
+            storyList.Add(s1);
+            storyList.Add(s2);
+            storyList.Add(s3);
+        }
+        [Test]
+       [TestCase("subash",2)]
+        public void TestByAuthorName(string authorName,int length)
+        {
+            List<Story> sortedStory = storyBo.findStory(storyList, authorName);
+            Assert.AreEqual(sortedStory.Count, length);
+        }
+
+        [Test]
+        [TestCase("9400",1)]
+        public void TestByNoOfLike(int likes,int length)
+        {
+            List<Story> sortedStory= storyBo.findStory(storyList, likes);
+            Assert.AreEqual(sortedStory.Count, length);
+        }
+    }
+}
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoryApplication
+{
+   public class StoryBo
+    {
+        public List<Story> findStory(List<Story> storyList, String authorName)
+        {
+            List<Story> result = new List<Story>();
+           foreach(var item in storyList)
+            {
+                if(item.AuthorName.Equals(authorName))
+                {
+                    Console.WriteLine(item);
+                    result.Add(item);
+                }
+            }
+            return result;
+
+        }
+        public List<Story> findStory(List<Story> storyList, int noOfLikes)
+        {
+            List<Story> result = new List<Story>();
+            foreach(var item in storyList)
+            {
+                if(item.NoOfLikes>= noOfLikes)
+                {
+                    result.Add(item);
+                }
+            }
+            return result;
+        }
+       
+
+
+
+    }
+}
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoryApplication
+{
+  public  class Story
+    {
+        private string name;
+        private string authorName;
+        private string genre;
+        private int noOfChapter;
+        private int noOfReads;
+        private int noOfLikes;
+
+
+        public Story(string name, string authorName, string genre, int noOfChapter, int noOfLikes, int noOfReads)
+        {
+            Name = name;
+            AuthorName = authorName;
+            Genre = genre;
+            NoOfChapter = noOfChapter;
+            NoOfReads = noOfReads;
+            NoOfLikes = noOfLikes;
+        }
+
+        public Story()
+        {
+        }
+
+        public string Name { get => name; set => name = value; }
+        public string AuthorName { get => authorName; set => authorName = value; }
+        public string Genre { get => genre; set => genre = value; }
+        public int NoOfChapter { get => noOfChapter; set => noOfChapter = value; }
+        public int NoOfReads { get => noOfReads; set => noOfReads = value; }
+        public int NoOfLikes { get => noOfLikes; set => noOfLikes = value; }
+
+        public override string ToString()
+        {
+            return string.Format("{0,15} {1,15} {2,15} {3,15} {4,15} {5,15}",Name,AuthorName,Genre,NoOfChapter, NoOfLikes,NoOfReads);
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+    }
+}
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoryApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int choose;
+            Console.WriteLine("ENTER THE NUMBER OF STORY YOU HAVE");
+            int noOfStory = Convert.ToInt32(Console.ReadLine());
+            List<Story> storyList = new List<Story>();
+
+            List<Story> shortedOrder = new List<Story>();
+
+            StoryBo classbo;
+
+
+            for(int i=0;i<noOfStory;i++)
+            {
+                Console.WriteLine("The story details should be given as a comma-separated value in the below order name, authorName, genre, noOfChapters, noOfLikes, noOfReads");
+                string storyDetails = Console.ReadLine();
+                string[] storys = storyDetails.Split(',') ;
+                Story story = new Story(storys[0], storys[1], storys[2], int.Parse(storys[3]), int.Parse(storys[4]), int.Parse(storys[5]));
+               
+                storyList.Add(story);
+            }
+            Console.WriteLine("ENTER 1 FOR SORTING BASED ON AUTHOR NAME/ENTER 2 FOR SORTING BASED ON NO OF LIKES");
+            choose = Convert.ToInt32(Console.ReadLine());
+            switch (choose)
+            {
+                case 1:
+                    Console.WriteLine("ENTER THE AUTHOR NAME BASED ON AUTHOR NAME DETAILS WILL BE SHORTLISTED");
+                    classbo = new StoryBo();
+                    shortedOrder = classbo.findStory(storyList, Console.ReadLine());
+                    break;
+
+                case 2:
+                    Console.WriteLine("ENTER THE NUMBER OF LIKE ");
+                    classbo = new StoryBo();
+                    shortedOrder = classbo.findStory(storyList, Convert.ToInt32(Console.ReadLine()));
+                    break;
+
+                default:
+                    {
+                        Console.WriteLine("no such matching availabe");
+                        break;
+                    }
+            }
+
+            foreach(var item in shortedOrder)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+    }
+}
